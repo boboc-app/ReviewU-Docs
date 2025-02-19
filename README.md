@@ -1,6 +1,12 @@
 # ReviewU
 [ReviewU Install](https://github.com/apps/reviewu)
 
+### Features
+- [x] PR 기반 내용 축약
+- [ ] 요약 내용 포맷 개선 및 커스터마이즈 기능
+- [ ] 영문 지원
+- [ ] ...
+
 
 ## 📌 ReviewU – 자동으로 Pull Request 변경 사항 요약
 PR Summarizer는 Pull Request의 Commit Diff와 Commit Message를 분석하여 주요 변경 사항을 자동으로 요약하는 GitHub App입니다.
