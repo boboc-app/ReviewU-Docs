@@ -4,16 +4,17 @@
 
 ### Features
 - [x] PR 기반 내용 축약
-- [x] 요약 내용 포맷 개선 및 커스터마이즈 기능
+- [x] 요약 내용 포맷 개선 및 커스터마이즈 기능 (2025-02-24)
 - [ ] 영문 지원
 - [ ] ...
 
-### Custom Summarize Format
+### Custom Summarize Format 
 1. Root 디렉토리 경로에 `./review_u` 디렉토리 생성
 2. `./review_u` 디렉토리 내부에 `SUMMARIZER_FORMAT.md`를 생성 (`.review_u/SUMMARIZER_FORMAT.md`)
 3. 표현하고자 하는 형식의 포맷을 만들고, 주석 (`<!---->`)을 통해서 각 섹션에 대한 설명을 기술
 4. PR을 통해서 반영된 포맷을 확인합니다. ( [예시](https://github.com/boboc-app/ReviewU-examples/blob/Customized-Review/.review_u/SUMMARIZER_FORMAT.md?plain=1)  /  [PR 요약 결과](https://github.com/boboc-app/ReviewU-examples/pull/2) )
 
+<hr/>
 ## 📌 ReviewU – 자동으로 Pull Request 변경 사항 요약
 ReviewU는 Pull Request의 Commit Diff와 Commit Message를 분석하여 주요 변경 사항을 자동으로 요약하는 GitHub App입니다.
 
