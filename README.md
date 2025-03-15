@@ -1,32 +1,70 @@
 # ReviewU
-- [ReviewU Install](https://github.com/apps/reviewu)
 - [ReviewU Example](https://github.com/boboc-app/ReviewU-examples)
 
-### Features
-- [x] PR 기반 내용 축약
-- [x] 요약 내용 포맷 개선 및 커스터마이즈 기능 (2025-02-24)
-- [ ] 영문 지원
-- [ ] ...
+## Introduction
+ReviewU is a GitHub App designed to streamline your code review process by automatically summarizing Pull Request changes. By providing clear and concise PR summaries, ReviewU helps developers quickly understand key modifications without sifting through extensive diff logs.
 
-### Custom Summarize Format 
-1. Root 디렉토리 경로에 `./review_u` 디렉토리 생성
-2. `./review_u` 디렉토리 내부에 `SUMMARIZER_FORMAT.md`를 생성 (`.review_u/SUMMARIZER_FORMAT.md`)
-3. 표현하고자 하는 형식의 포맷을 만들고, 주석 (`<!---->`)을 통해서 각 섹션에 대한 설명을 기술
-4. PR을 통해서 반영된 포맷을 확인합니다. ( [예시](https://github.com/boboc-app/ReviewU-examples/blob/Customized-Review/.review_u/SUMMARIZER_FORMAT.md?plain=1)  /  [PR 요약 결과](https://github.com/boboc-app/ReviewU-examples/pull/2) )
--  [기본 포맷 예시](https://github.com/boboc-app/ReviewU-examples/pull/1)
+## Guide
+
+### Main Configuration
+The primary configuration for ReviewU is managed within the `.review_u` directory. All files in this directory are excluded from the PR summary generation. Once installed, ReviewU is immediately active, and these configuration settings are optional.
+
+### [Optional] Configuration Settings
+To customize ReviewU's behavior, create a configuration file named `.reviewuConfig` inside the `.review_u` directory. This YAML file allows you to tailor which files to ignore, specify PR title patterns that should skip summary generation, and set the language for your summaries:
+
+```yaml
+# .review_u/.reviewuConfig
+excludes:  # List of files or directories to exclude from PR summary analysis
+  - build.gradle.kts
+  - .env*
+  - **/test/**
+exclude-titles:  # PR title patterns that will not trigger a summary
+  - Release/**
+  - Minor/**
+language-code: EN  # Language for PR summaries (e.g., EN, KR, JP, CN). Default is EN.
+```
+
+### [Optional] Format Customization
+If you wish to customize the format of the generated PR summaries, create a file named `SUMMARIZER_FORMAT.md` in the `.review_u` directory. This file lets you define separate sections for major and minor changes, ensuring that the summary fits your team’s style:
+
+```markdown
+# .review_u/SUMMARIZER_FORMAT.md
+
+## Major Changes
+<!-- Summarize core modifications that impact business logic or primary functionality.
+Example:
+1. Modify 'AA' function logic  
+   - Updated algorithm from 'OO' to 'XX'.
+2. Add 'OOO' Classes  
+   - Introduced 'OOO' class to handle 'XXX' functionality.
+-->
+
+## Minor Changes
+<!-- Summarize non-critical modifications such as updates to build configurations, documentation, or assets. -->
+```
+
+### Limitations
+ReviewU adheres to GitHub’s inherent repository constraints, including:
+- [Repository Limits](https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits)
+- [Diff Limits](https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits#diff-limits)
+- [Commit Listings Limits](https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits#commit-listings-limits)
+
+These limitations might affect the summarization of extremely large or complex pull requests.
+
+## FAQ
+**Q: Do I need to set up configurations immediately after installation?**  
+A: No. ReviewU works out-of-the-box. The configuration settings are optional and can be customized later.
+
+**Q: How do I change the language for PR summaries?**  
+A: Update the `language-code` field in the `.reviewuConfig` file with your desired language code (e.g., EN, KR).
+
+**Q: Can I exclude certain files or directories from being summarized?**  
+A: Yes. Use the `excludes` field in the `.reviewuConfig` file to list files or directories that should be ignored during summary generation.
+
+## Conclusion
+ReviewU is crafted to enhance your code review workflow by automatically generating concise and focused PR summaries. Customize the configuration and format to align with your team’s needs, and enjoy a more efficient and productive review process!
 
 <hr/>
-## 📌 ReviewU – 자동으로 Pull Request 변경 사항 요약
-ReviewU는 Pull Request의 Commit Diff와 Commit Message를 분석하여 주요 변경 사항을 자동으로 요약하는 GitHub App입니다.
-
-### 🚀 주요 기능
-자동 요약 생성: Commit Diff와 Message를 기반으로 핵심 변경 사항을 간결하게 정리 <br/>
-PR 리뷰 효율화: 리뷰어가 변경 내용을 빠르게 파악할 수 있도록 요약 제공 <br/>
-개발 흐름 개선: 불필요한 커밋 로그 탐색 없이, 중요한 변경 사항만 집중적으로 확인 <br/>
-
-### 🎯 이런 분들께 추천합니다!
-✔️ 여러 개의 커밋이 포함된 PR을 한눈에 파악하고 싶은 리뷰어 <br/>
-✔️ 변경 사항 요약을 문서화하는 번거로움을 줄이고 싶은 개발자 <br/>
-✔️ 코드 리뷰 프로세스를 효율적으로 개선하고 싶은 팀
-
-지금 ReviewU 를 사용하여 코드 리뷰 속도를 높이고, 더 나은 협업 환경을 만들어보세요! 🚀
+<br/>
+<br/>
+@ Contact: `bo.kang@boboc.app`
